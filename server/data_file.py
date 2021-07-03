@@ -80,7 +80,7 @@ class DataFile:
             skiprows=header,
             error_bad_lines=False,
             header=None
-        ).head(100000)
+        )
         print(self.data.tail())
         print("[{:.2f}] rename columns".format(time.time() - ts))
         self.data = self.data.rename(columns={

@@ -77,7 +77,7 @@ def serve():
 
 
 if __name__ == "__main__":
-    print("TrajVis3D Server Demo 4")
+    print("TrajVis3D Server Public Demo 1")
     if len(sys.argv) < 7:
         print("usage:\nserver.exe [file] [row#_uid] [row#_time] [row#_lat] [row#_lng] [coord_system]")
         print("currently supported coord_system: WGS84 and GCJ02")

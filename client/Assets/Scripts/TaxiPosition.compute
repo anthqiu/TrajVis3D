@@ -1,0 +1,56 @@
+// Each #kernel tells which function to compile; you can have many kernels
+// #pragma kernel TaxiPosition
+#pragma kernel LatLngToVector
+#pragma enable_d3d11_debug_symbols
+
+#define PI 3.14159265358979323846
+
+struct TaxiProperty
+{
+    float3 start_pos, end_pos;
+    int start_ts, end_ts;
+};
+
+float current_timestamp;
+
+float2 floating_origin;
+
+float mercator_scale;
+
+RWStructuredBuffer<TaxiProperty> properties;
+RWStructuredBuffer<float3> result;
+
+RWStructuredBuffer<float2> lat_lngs;
+
+[numthreads(64,1,1)]
+void TaxiPosition(uint3 id : SV_DispatchThreadID)
+{
+    const uint idx = id.x;
+    const float frac = (current_timestamp - properties[idx].start_ts) /
+        (properties[idx].end_ts - properties[idx].start_ts);
+    result[idx] = properties[idx].start_pos + frac * (properties[idx].end_pos);
+}
+
+[numthreads(64,1,1)]
+void LatLngToVector(uint3 id : SV_DispatchThreadID)
+{
+    const uint idx = id.x;
+
+    float2 res = lat_lngs[idx];
+
+    float num = sin(res.x * (PI / 180.0));
+    res.x = res.y * (PI / 180.0) * 6378137.0;
+    res.y = 0.5 * log((1.0 + num) / (1.0 - num)) * 6378137.0;
+
+    float num1 = (res.x - floating_origin.x) / mercator_scale;
+    float num2 = (res.y - floating_origin.y) / mercator_scale;
+
+    if (num1 < -20037508.3427892)
+        num1 += 40075016.6855785;
+    else if (num1 > 20037508.3427892)
+        num1 -= 40075016.6855785;
+
+    result[idx].x = (float)num1;
+    result[idx].y = 0.0f;
+    result[idx].z = (float)num2;
+}

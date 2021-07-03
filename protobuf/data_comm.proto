@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+message Properties
+{
+    float center_lat = 1;
+    float center_lng = 2;
+    int32 first_timestamp = 3;
+    int32 last_timestamp = 4;
+    float length_x = 5;
+    float length_z = 6;
+}
+
+message Instruction
+{
+    string uid = 1;
+    int32 start_ts = 2;
+    float start_lat = 3;
+    float start_lng = 4;
+    bool is_end_instruction = 5;
+    int32 end_ts = 6;
+    float end_lat = 7;
+    float end_lng = 8;
+}
+
+message TimePeriod
+{
+    int32 start_ts = 1;
+    int32 end_ts = 2;
+}
+
+message InstructionSet
+{
+    repeated Instruction instructions = 1;
+}
+
+message Empty {}
+
+service TrajVis3D 
+{
+    rpc GetInstructionsBetween(TimePeriod) returns (stream Instruction) {}
+    rpc GetInstructionSetBetween(TimePeriod) returns (InstructionSet) {}
+    rpc GetProperties(Empty) returns (Properties) {}
+}

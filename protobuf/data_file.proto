@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+enum CoordinateSystem
+{
+    WGS84 = 0;
+    GCJ02 = 1;
+}
+
+message DataFile
+{
+    string file = 1;
+    string sep = 2;
+    bool has_header = 3;
+    int32 row_uid = 4;
+    int32 row_time = 5;
+    CoordinateSystem coord_sys = 6;
+    int32 row_lat = 7;
+    int32 row_lng = 8;
+}

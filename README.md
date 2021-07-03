@@ -93,7 +93,7 @@ ready to serve. timestamp between 0 and 0. total number of valid timestamps: 0.
 ### 安装 Unity
 
 要编译客户端，系统必须装有：
- - Unity 版本 2020.3.13f1 或以上版本
+ - Unity 版本 2020.3.13f1 或以上版本（Unity Hub：[从此处下载](https://unity3d.com/cn/get-unity/download)）
  - 带有“使用 Unity 的游戏开发”工作负荷的 Visual Studio 2019。
 
 ![](doc/img/visual-studio.png)

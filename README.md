@@ -4,6 +4,14 @@ TrajVis3D 是一个基于 Unity3D 引擎的大规模轨迹数据可视化沙盘�
 
 ![](doc/img/structure.png)
 
+## * 项目文件夹组织
+
+[server](server/) 存放服务端源代码
+
+[client](client/) 存放客户端源代码
+
+[protobuf](protobuf/) 存放服务端与客户端之间的通讯协议
+
 ## 运行前准备
 
 ### 下载客户端用的 gRPC 插件

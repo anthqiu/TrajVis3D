@@ -4,6 +4,18 @@ TrajVis3D 是一个基于 Unity3D 引擎的大规模轨迹数据可视化沙盘�
 
 ![](doc/img/structure.png)
 
+## 项目隶属于
+
+邱石
+
+[南方科技大学-东京大学超智慧城市联合研究中心](http://cse.sustech.edu.cn/cn/research/centerView/id/162)
+
+**指导教师：**
+
+南方科技大学 [宋轩 副教授](https://faculty.sustech.edu.cn/songx/)
+
+东京大学 [姜仁河 助理教授](https://www.u-tokyo.ac.jp/focus/en/people/k0001_02436.html)
+
 ## * 项目文件夹组织
 
 [server](server/) 存放服务端源代码
@@ -128,3 +140,4 @@ ready to serve. timestamp between 0 and 0. total number of valid timestamps: 0.
 ### 打包客户端
 
 按下 `Ctrl` + `B` 组合键，选择输出路径，即可将客户端打包为可执行文件分发。也可通过 `File -> Build Settings...` 自定义打包参数。
+
